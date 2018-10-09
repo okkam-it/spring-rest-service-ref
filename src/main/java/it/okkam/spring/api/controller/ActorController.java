@@ -20,7 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RequestMapping(value = ActorController.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class ActorController {
 
-  protected static final String BASE_URL = "/v1/actors";
+  public static final String BASE_URL = "/v1/actors";
 
   @GetMapping("/ping")
   public String ping() {
