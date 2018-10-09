@@ -22,7 +22,7 @@ public class ActorControllerExceptionHandler {
   @ResponseBody
   @ResponseStatus(HttpStatus.NOT_FOUND)
   @ExceptionHandler({ ActorNotFoundException.class })
-  public ApiError handleActoprNotFound(final ActorNotFoundException ex,
+  public ApiError handleActorNotFound(final ActorNotFoundException ex,
       final WebRequest request) {
     logger.info(ex.getClass().getName());
     return new ApiError(1, ex.getLocalizedMessage());
