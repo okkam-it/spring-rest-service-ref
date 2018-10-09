@@ -6,8 +6,6 @@ import java.util.List;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
-import it.okkam.spring.api.exceptions.ActorNotFoundException;
-
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -205,17 +203,7 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
   @ExceptionHandler({ Exception.class })
   public ApiError handleAll(final Exception ex, final WebRequest request) {
     logger.error(ex.getClass().getName());
-    return new ApiError(ex.getLocalizedMessage(), "error occurred");
-  }
-
-  // Application specific errors
-  @ResponseBody
-  @ResponseStatus(HttpStatus.NOT_FOUND)
-  @ExceptionHandler({ ActorNotFoundException.class })
-  public ApiError handleActoprNotFound(final ActorNotFoundException ex,
-      final WebRequest request) {
-    logger.info(ex.getClass().getName());
-    return new ApiError(1, ex.getLocalizedMessage());
+    return new ApiError(ex.getLocalizedMessage(), "unhandled error occurred");
   }
 
 }
